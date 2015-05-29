@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  get 'request/index'
+
+  get 'request/deliver_conf'
+  get 'request/pickup_conf'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
