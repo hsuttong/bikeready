@@ -1,15 +1,15 @@
-<h1>BikeReady</h1>
+<h1>Welcome to BikeReady</h1>
 <%= button_to "Sign Up", new_user_path %>
 
-<%= form_for @user, url: login_path do |f| %>
+<%= form_for :session, url: login_path do |f| %>
   <p>
     <%= f.label :email %><br>
-    <%= f.text_field :email %>
+    <%= f.email_field :email %>
   </p>
 
   <p>
     <%= f.label :password_digest %><br>
-    <%= f.text_field :password_digest %>
+    <%= f.password_field :password_digest %>
   </p>
 
   <p>
