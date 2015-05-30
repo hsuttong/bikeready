@@ -70,7 +70,10 @@
     html, body, #map-canvas { height: 80%; width: 80%; margin: 0; padding: 0;}
 </style>
 
-<p> You are signed in: <%= current_user.first_name %> </p>
+
+<h1>Manage your bike, <%= current_user.first_name %></h1>
+<p><%= current_user.first_name %></p>
+
 <% if user_signed_in? %>
   <li>
   <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
@@ -81,11 +84,7 @@
   </li>
 <% end %>
 
-
-<h1>Manage your bike</h1>
-<p><%= current_user.first_name %></p>
-
-<img class="avatar" src="http://www.sessionlogs.com/media/icons/defaultIcon.png">
+<img class="avatar" src="https://avatars1.githubusercontent.com/u/7356268?v=3&s=400">
 
 <% if @bike %>
   <p>Bike Status:</p>
@@ -99,3 +98,5 @@
   <% end %>
 <% end %>
 <div id="map-canvas"></div>
+
+

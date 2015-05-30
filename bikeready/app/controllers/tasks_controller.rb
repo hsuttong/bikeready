@@ -26,9 +26,9 @@ class TasksController < ApplicationController
     p "today is a good day"
   end
 
-  # def show
-  #   #@user = User.find(params[:id])
-  #   @user = User.find(1)
-  #   @bike = @user.bikes.first
-  # end
+  def show
+    #@user = User.find(params[:id])
+    @user = User.find(1)
+    @bike = @user.bikes.first
+  end
 end
