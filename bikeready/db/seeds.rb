@@ -17,5 +17,6 @@ end
                  zip_code: Faker::Address.zip,
                  user_id:  user.id)
 
+
   Bike.create(make: 'mountain bike', name: 'lorenzo_bike', color: Faker::Commerce.color, status: 'with_user', user_id: user.id)
 end
