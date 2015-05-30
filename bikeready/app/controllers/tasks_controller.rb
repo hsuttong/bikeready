@@ -8,6 +8,7 @@ GOOG_KEY = ENV['GOOG_KEY']
 class TasksController < ApplicationController
   include HTTParty
 
+
   def index
   end
 
