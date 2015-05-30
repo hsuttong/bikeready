@@ -1,8 +1,6 @@
 Rails.application.routes.draw do
 
-
   devise_for :users
-
   resources :tasks
   # get 'tasks/index'
 
@@ -14,7 +12,6 @@ Rails.application.routes.draw do
   # post 'login' => 'sessions#create'
 
   resources :users
-
 
   # You can have the root of your site routed with "root"
   root 'users#show'

@@ -4,6 +4,7 @@ class UsersController < ApplicationController
 
   def show
     @user = current_user
+    @bike = current_user.bikes.first
   end
 
 end
