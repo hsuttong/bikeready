@@ -92,7 +92,7 @@
   <div id="bike_status" class="div-bg"><%= @bike.status %></div><br>
 
   <%= link_to 'Deliver Bike', new_task_path %><br>
-  <%= link_to 'Pick-up Bike', tasks_pickup_conf_path %><br>
+  <%= link_to 'Pick-up Bike', new_task_path %><br>
 
   <% if @bike.status == 'pickup' || @bike.status =='pending'  %>
     <a href="#">Cancel Request</a>
