@@ -1,5 +1,4 @@
 <h1>Manage your bike</h1>
-
 <p><%= @user.first_name %></p>
 
 <img class="avatar" src="http://www.sessionlogs.com/media/icons/defaultIcon.png">
@@ -7,11 +6,12 @@
 <p>Bike Status:</p>
 <div id="bike_status" class="div-bg"><%= @bike.status %></div><br>
 
-<%= link_to 'Deliver Bike', request_deliver_conf_path %><br>
-<%= link_to 'Pick-up Bike', request_pickup_conf_path %><br>
+<a href="/tasks/deliver_conf">test deliver bike with a tag</a><br>
+<%= link_to 'Deliver Bike', new_task_path %><br>
+<%= link_to 'Pick-up Bike', tasks_pickup_conf_path %><br>
 
 <% if @bike.status == 'pickup' || @bike.status =='pending'  %>
   <a href="#">Cancel Request</a>
-<% end %> 
+<% end %>
 
 <div id='map-container'></div>
