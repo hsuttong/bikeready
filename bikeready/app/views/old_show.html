@@ -23,23 +23,9 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-
-        <% if @bike %>
-          <li class="active">
-            <%= link_to 'Deliver Bike', new_task_path %>
-              <span class="sr-only">(current)</span>
-          </li>
-          <li>
-            <%= link_to 'Pick-up Bike', tasks_pickup_conf_path %>
-          </li>
-        <%end%>
-
-        <% if @bike.status == 'pickup' || @bike.status =='pending'  %>
-          <li>
-            <%= link_to 'Cancel Request', tasks_pickup_conf_path %>
-          </li>
-        <%end%>
-
+        <li class="active">
+          <a href="#">Link <span class="sr-only">(current)</span></a></li>
+        <li><a href="#">Link</a></li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
@@ -60,15 +46,7 @@
         <button type="submit" class="btn btn-default">Submit</button>
       </form>
       <ul class="nav navbar-nav navbar-right">
-
-        <% if user_signed_in? %>
-        <li>
-          <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
-        </li>
-        <% else %>
-          <%= link_to('Login', new_user_session_path)  %>
-        <% end %>
-
+        <li><a href="#">Link</a></li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
@@ -84,21 +62,40 @@
   </div><!-- /.container-fluid -->
 </nav>
 
+
+
+<% if user_signed_in? %>
+  <button class="button">
+  <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
+  </button>
+<% else %>
+    <%= link_to('Login', new_user_session_path)  %>
+<% end %>
+
+
+
 <div id="body-container">
 
   <img class="avatar" src="http://www.sessionlogs.com/media/icons/defaultIcon.png">
-
   <div id="user_name">
     You are signed in as: <%= current_user.first_name %>
   </div>
 
 <% if @bike %>
   <p>Bike Status:</p>
-  <div id="bike_status" class="div-bg">
-    <%= @bike.status %>
-  </div><br>
-<% end %>
+    <div id="bike_status" class="div-bg">
+      <%= @bike.status %>
+    </div>
+    <br>
 
+  <a href="/tasks/deliver_conf">test deliver bike with a tag</a><br>
+    <%= link_to 'Deliver Bike', new_task_path %><br>
+    <%= link_to 'Pick-up Bike', tasks_pickup_conf_path %>
+
+  <% if @bike.status == 'pickup' || @bike.status =='pending'  %>
+    <a href="#">Cancel Request</a>
+  <% end %>
+<% end %>
 <div id='map-container'></div>
 
 </div>
