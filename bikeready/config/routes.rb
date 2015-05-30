@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
   # post 'login' => 'sessions#create'
 
-   resources :users
+  resources :users
 
 
   # You can have the root of your site routed with "root"
