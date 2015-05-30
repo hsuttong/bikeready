@@ -1,20 +1,10 @@
-<<<<<<< HEAD
 <div id="title">
   <div id="banner">
     <h1>Manage your bike</h1>
   </div>
 
-  <% if user_signed_in? %>
-    <button class="button">
-    <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
-    </button>
-  <% else %>
-    <li>
-      <%= link_to('Login', new_user_session_path)  %>
-    </li>
-  <% end %>
+
 </div>
-=======
 <p> You are signed in: <%= current_user.first_name %> </p>
 
 
