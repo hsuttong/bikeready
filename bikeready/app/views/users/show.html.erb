@@ -1,25 +1,31 @@
-<p> You are signed in: <%= current_user.first_name %> </p>
+<div id="title">
+  <div id="banner">
+    <h1>Manage your bike</h1>
+  </div>
+
+  <% if user_signed_in? %>
+    <button class="button">
+    <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
+    </button>
+  <% else %>
+    <li>
+      <%= link_to('Login', new_user_session_path)  %>
+    </li>
+  <% end %>
+</div>
 
 
-<% if user_signed_in? %>
-  <li>
-  <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
-  </li>
-<% else %>
-  <li>
-    <%= link_to('Login', new_user_session_path)  %>
-  </li>
-<% end %>
-
-
-<h1>Manage your bike</h1>
-<p><%= current_user.first_name %></p>
-
+<div id="body-container">
 <img class="avatar" src="http://www.sessionlogs.com/media/icons/defaultIcon.png">
+<div id="user_name">
+  You are signed in as: <%= current_user.first_name %>
+</div>
 
 <% if @bike %>
   <p>Bike Status:</p>
-  <div id="bike_status" class="div-bg"><%= @bike.status %></div><br>
+  <div id="bike_status" class="div-bg">
+    <%= @bike.status %>
+  </div><br>
 
   <a href="/tasks/deliver_conf">test deliver bike with a tag</a><br>
   <%= link_to 'Deliver Bike', new_task_path %><br>
@@ -30,3 +36,5 @@
   <% end %>
 <% end %>
 <div id='map-container'></div>
+
+</div>
