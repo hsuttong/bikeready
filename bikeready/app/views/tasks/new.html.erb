@@ -2,15 +2,11 @@
 
 
 <h3>Enter an delivery address:</h3>
-<%= form_for :address do |f| %>
-  <%= f.label :Street %>
-  <%= f.text_field :street %>
-  <%= f.label :City %>
-  <%= f.text_field :city %>
-  <%= f.label :State %>
-  <%= f.text_field :state %>
-  <%= f.label :Zipcode %>
-  <%= f.text_field :zip_code %>
-  <%= f.submit %>
-<% end %>
 
+<form action="/tasks" method="post">
+  <input type="text" name="street" placeholder="street"> 
+  <input type="text" name="city" placeholder="city">
+  <input type="text" name="state" placeholder="state">
+  <input type="text" name="zip_code" placeholder="zip">
+  <input type="submit" value="submit">
+</form>
