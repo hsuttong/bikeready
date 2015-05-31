@@ -32,6 +32,7 @@ module Postmates
     end
 
     def delivery_status(delivery_id)
+      @del_status ||= get("deliveries/#{delivery_id}")
     end
 
 
@@ -51,7 +52,7 @@ module Postmates
                   body:       params
                 }
 
-      HTTParty.get(url, {query: q}).parsed_response
+      HTTParty.get(url, options) 
     end
   end
 end

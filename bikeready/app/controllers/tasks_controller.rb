@@ -32,30 +32,40 @@ class TasksController < ApplicationController
     end
 
     api = Postmates::Client.new
+
+    #Get a Quote
     quote_response = api.create_delivery_quote( { dropoff_address: @task.dropoff_address, pickup_address: @task.pickup_address } )
     @task.quote_id = quote_response["id"]
 
+    @user = User.find(current_user.id)
+    @bike = @user.bikes.first
+
     delivery_hash = {
-      manifest: '#{current_user.bike.color} #{current_user.bike.make}',
-      pickup_name: 'Bike Ready, Inc.',
+      manifest: "#{@bike.color} #{@bike.make}",
+      pickup_name: "Bike Ready, Inc.",
       pickup_address: @task.pickup_address,
-      pickup_phone_number: '415-555-1212',
-      pickup_notes: 'Fragile',
+      pickup_phone_number: "415-555-1212",
+      pickup_notes: "Fragile",
       dropoff_name: current_user.first_name,
       dropoff_address: @task.dropoff_address,
       dropoff_phone_number: current_user.phone,
       quote_id: @task.quote_id
     }
 
+    #Create a Delivery
     delivery_response = api.create_delivery(delivery_hash)
-
     @task.delivery_id = delivery_response["id"]
     @task.status = delivery_response["status"]
-    @user = User.find(current_user.id)
-    @bike = @user.bikes.first
     @bike.status = @task.status
     @bike.save!
     @task.save!
+
+    #Get current position of delivery
+    del_status_response = api.delivery_status(@task.delivery_id)
+    location = del_status_response["location"]
+
+
+    # binding.pry
 
 
     redirect_to '/'
