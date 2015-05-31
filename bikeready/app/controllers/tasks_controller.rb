@@ -1,9 +1,5 @@
 require 'httparty'
 
-# KEY = ENV['POSTMATES_API_KEY']
-# USER = ENV['POSTMATES_CUSTOMER_ID']
-# HOST = ENV['POSTMATES_HOST']
-
 class TasksController < ApplicationController
 
   skip_before_filter  :verify_authenticity_token  # Added this to prevent CSRF errors
@@ -39,7 +35,6 @@ class TasksController < ApplicationController
     quote_response = api.create_delivery_quote( { dropoff_address: @task.dropoff_address, pickup_address: @task.pickup_address } )
     @task.quote_id = quote_response["id"]
 
-
     delivery_hash = {
       manifest: '#{current_user.bike.color} #{current_user.bike.make}',
       pickup_name: 'Bike Ready, Inc.',
@@ -53,7 +48,6 @@ class TasksController < ApplicationController
     }
 
     delivery_response = api.create_delivery(delivery_hash)
-    p delivery_response
 
     @task.delivery_id = delivery_response["id"]
     @task.status = delivery_response["status"]
@@ -63,7 +57,6 @@ class TasksController < ApplicationController
     @bike.save!
     @task.save!
 
-    binding.pry
 
     redirect_to '/'
   end
