@@ -32,7 +32,8 @@ module Postmates
     end
 
     def delivery_status(delivery_id)
-      @del_status ||= get("deliveries/#{delivery_id}")
+      get("deliveries/#{delivery_id}")
+      #@del_status ||= get("deliveries/#{delivery_id}") #not getting updated status with this assignment
     end
 
 
@@ -47,7 +48,7 @@ module Postmates
     end
 
     def get(end_point, params={})
-      url = "#{HOST}/#{PATH}/#{end_point}"
+      url = "#{HOST}#{PATH}/#{end_point}"
       options = { basic_auth: {username: KEY},
                   body:       params
                 }

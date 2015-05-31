@@ -37,6 +37,7 @@ class TasksController < ApplicationController
     quote_response = api.create_delivery_quote( { dropoff_address: @task.dropoff_address, pickup_address: @task.pickup_address } )
     @task.quote_id = quote_response["id"]
 
+    #Create a Delivery
     @user = User.find(current_user.id)
     @bike = @user.bikes.first
 
@@ -49,10 +50,20 @@ class TasksController < ApplicationController
       dropoff_name: current_user.first_name,
       dropoff_address: @task.dropoff_address,
       dropoff_phone_number: current_user.phone,
-      quote_id: @task.quote_id
+      quote_id: @task.quote_id,
+      robo_pickup:          params[:pickup],
+      robo_pickup_complete: params[:pickup_complete],
+      robo_dropoff:         params[:pickup_dropoff],
+      robo_delivered:       params[:pickup_delivered]
     }
 
-    #Create a Delivery
+
+      # robo_pickup="00:10:00"
+      # robo_pickup_complete="00:20:00"
+      # robo_dropoff="00:21:00"
+      # robo_delivered="00:34:00"
+
+
     delivery_response = api.create_delivery(delivery_hash)
     @task.delivery_id = delivery_response["id"]
     @task.status = delivery_response["status"]
@@ -60,12 +71,11 @@ class TasksController < ApplicationController
     @bike.save!
     @task.save!
 
-    #Get current position of delivery
+    #Get status of delivery
     del_status_response = api.delivery_status(@task.delivery_id)
-    location = del_status_response["location"]
 
-
-    # binding.pry
+    p "im in the controller" 
+    binding.pry
 
 
     redirect_to '/'
