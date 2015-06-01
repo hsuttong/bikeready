@@ -17,16 +17,21 @@
 }
 
 .panel-default {
-opacity: 0.9;
-margin-top:30px;
+  opacity: 0.9;
+  margin-top:30px;
 }
-.form-group.last { margin-bottom:0px; }
 
-.br_title{
+.form-group.last {
+  margin-bottom:0px;
+}
+
+.br_title  {
   font-family: Bradley Hand, arial, SignPainter-HouseScript;
   font-size:68px;
   text-align:center;
+
 }
+
 //------------end login
 
 .background {
@@ -36,58 +41,92 @@ margin-top:30px;
   width:100%;
 }
 
-.title{
+.title {
   width:100%;
 }
 
-.banner{
+.banner {
   width:1024px;
   margin-left:auto;
   margin-right:auto;
   font-family:arial;
-  font-size:80px;
+  font-size:60px;
   text-align:center;
 }
 
-.user_name{
+.user_name {
   width:100%;
   font-family:arial;
-  font-size:18px;
   margin-top: 10px;
 }
 
-.body-container{
+.body-container {
   width:100%;
   height:100%;
   padding-top:20px;
+  margin-top:10px;
   background-color:rgba(255,255,255,0.7);
 }
 
-.form{
+.form {
   width:100%;
   padding:10px;
 }
 
-.button{
+.button {
  margin-left:50px;
 }
 
-
 .avatar {
-  width: 80px;
-  height: 80px;
-  margin-top:20px;
+  width: 70px;
+  height: 70px;
   margin-left:30px;
 }
 
-#bike_status{
-
-  font-size:18px;
+#bike_status {
   font-family:arial;
 }
 
-.info{
+.info {
   margin-left:100px;
 }
 
+html, body, #map-canvas {
+  height: 500px;
+  width: 100%;
+}
+//=======================================
+.jumbotron {
+    background: rgba(122, 130, 136, 0.7)!important;
 
+    color: white;
+
+}
+
+p , .manage_bike{
+  color: white;
+}
+
+h1 {
+  color: white;
+}
+
+.panel-transparent {
+  background: none;
+}
+
+.panel-transparent .panel-heading{
+  background: rgba(122, 130, 136, 0.2)!important;
+}
+
+.panel-transparent .panel-body{
+  background: rgba(46, 51, 56, 0.2)!important;
+}
+
+
+footer {
+
+  height: 200px;
+  color: white;
+
+}

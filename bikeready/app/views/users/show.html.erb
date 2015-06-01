@@ -1,199 +1,58 @@
-<script type="text/javascript">
-    function initialize() {
-        var myLatlng = new google.maps.LatLng(37.773736, -122.504739);
-        var mapOptions = {
-          center: { lat: 37.77, lng: -122.419},
-          zoom: 12
-        };
-        var map = new google.maps.Map(document.getElementById('map-canvas'),
-            mapOptions);
+<div class="container">
 
-        var marker = new google.maps.Marker({
-          position: myLatlng,
-          map: map,
-          icon: "http://www.wmata.com/img/icon-bike.gif",
-        });
+      <!-- Static navbar -->
+      <nav class="navbar navbar-default">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Bike Ready</a>
+          </div>
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+               <% if @bike %>
+                  <li>
+                    <%= link_to 'Deliver Bike', new_task_path %>
+                      <span class="sr-only">(current)</span>
+                  </li>
+               <%end%>
+              <li><a href="../about.html">About</a></li>
+              <li><a href="../contact.html">Contact</a></li>
+              
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              
+             
+              <% if user_signed_in? %>
+                <li>
+                  <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
+                </li>
+                <% else %>
+                  <%= link_to('Login', new_user_session_path)  %>
+              <% end %>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div><!--/.container-fluid -->
+      </nav>
 
-        getDirections(map);
-
-      }
-
-      function moveMarker(map, marker, latlng) {
-        marker.setPosition(latlng);
-        map.panTo(latlng);
-      }
-
-      function autoRefresh(map, pathCoords) {
-        var i, route, marker;
-
-        route = new google.maps.Polyline({
-        path: [],
-        geodesic : true,
-        strokeColor: '#FF0000',
-        strokeOpacity: 1.0,
-        strokeWeight: 2,
-        editable: false,
-        map:map
-        });
-
-        marker = new google.maps.Marker({map:map, icon:"http://www.wmata.com/img/icon-bike.gif"});
-
-        for (i = 0; i < pathCoords.length; i++) {
-          setTimeout(function(coords) {
-            route.getPath().push(coords);
-            moveMarker(map, marker, coords);
-            }, 200 * i, pathCoords[i]);
-        }
-      }
-
-
-
-      function getDirections(map) {
-        var directionsService = new google.maps.DirectionsService();
-
-        var request = {
-        origin: new google.maps.LatLng(37.773736, -122.504739),
-        destination: new google.maps.LatLng(37.773736, -122.403665),
-        travelMode: google.maps.TravelMode.WALKING
-        };
-        directionsService.route(request, function(result, status) {
-        if (status == google.maps.DirectionsStatus.OK) {
-            autoRefresh(map, result.routes[0].overview_path);
-          }
-        });
-      }
-      google.maps.event.addDomListener(window, 'load', initialize);
-
-</script>
-
-<style type="text/css">
-    html, body, #map-canvas { height: 80%; width: 80%; margin: 0; padding: 0;}
-</style>
-
-
-<h1>Manage your bike, <%= current_user.first_name %></h1>
-<p><%= current_user.first_name %></p>
-
-<nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-        <span class="sr-only">
-          Toggle navigation
-        </span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="#">
-        Bike Ready
-      </a>
-    </div>
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
-
-        <% if @bike %>
-          <li class="active">
-            <%= link_to 'Deliver Bike', new_task_path %>
-              <span class="sr-only">(current)</span>
-          </li>
-          <li>
-            <%= link_to 'Pick-up Bike', tasks_pickup_conf_path %>
-          </li>
-        <%end%>
-
-
-        <% if @bike.status == 'pickup' || @bike.status =='pending'  %>
-          <li>
-            <%= link_to 'Cancel Request', tasks_pickup_conf_path %>
-          </li>
-        <%end%>
-
-<img class="avatar" src="https://avatars1.githubusercontent.com/u/7356268?v=3&s=400">
-
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
-          <ul class="dropdown-menu" role="menu">
-            <li><a href="#">Action</a></li>
-            <li><a href="#">Another action</a></li>
-            <li><a href="#">Something else here</a></li>
-            <li class="divider"></li>
-            <li><a href="#">Separated link</a></li>
-            <li class="divider"></li>
-            <li><a href="#">One more separated link</a></li>
-          </ul>
-        </li>
-      </ul>
-      <form class="navbar-form navbar-left" role="search">
-        <div class="form-group">
-          <input type="text" class="form-control" placeholder="Search">
-        </div>
-        <button type="submit" class="btn btn-default">Submit</button>
-      </form>
-      <ul class="nav navbar-nav navbar-right">
-
-        <% if user_signed_in? %>
-        <li>
-          <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
-        </li>
-        <% else %>
-          <%= link_to('Login', new_user_session_path)  %>
-        <% end %>
-
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
-          <ul class="dropdown-menu" role="menu">
-            <li><a href="#">Action</a></li>
-            <li><a href="#">Another action</a></li>
-            <li><a href="#">Something else here</a></li>
-            <li class="divider"></li>
-            <li><a href="#">Separated link</a></li>
-          </ul>
-        </li>
-      </ul>
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
-</nav>
-
-  <%= link_to 'Deliver Bike', new_task_path %><br>
-  <%= link_to 'Pick-up Bike', new_task_path %><br>
-
-  <% if @bike.status == 'pickup' || @bike.status =='pending'  %>
-    <a href="#">Cancel Request</a>
-  <% end %>
-<div id="map-canvas"></div>
-
-
-
-
-<!-- below this is the information of the user and the bike status -->
-
-<div class="body-container">
-  <div class="title">
-    <div class="banner">
-      Manage your bike
-    </div>
-  </div>
-
-  <div class="info">
-    <img class="avatar" src="http://www.sessionlogs.com/media/icons/defaultIcon.png">
-    <div class="user_name">
-      <h3>You are signed in:
-      <%= current_user.first_name %>
-      </h3>
-    </div>
-
-    <% if @bike %>
-      <div id="bike_status" class="div-bg">
-      <h3>
-        Bike Status: &nbsp;&nbsp;&nbsp; <%= @bike.status %>
-      </h3>
+      <!-- Main component for a primary marketing message or call to action -->
+      <div class="jumbotron">
+        <h1 class="manage_bike">Welcome <%= current_user.first_name %>!</h1>
+        <p class="manage_bike">Get your bike delivered anywhere inside San Francisco, CA.</p>
       </div>
-    <% end %>
+      
+        <div class="col-md-6" id="map-canvas">
+        </div>  <!-- div for map -->
 
-    <div id='map-container'></div>
-  </div>
+      <div id="footer">
+        <div class="container">
+        <p class="muted credit">Pocket Gophers <a href="http://www.devbootcamp.com">BikeReady</a> and <a href="http://www.devbootcamp.com">BikeReady Team copyright 2015</a>.</p>
+      </div>
+    </div>
 
-</div>
+
+    </div> <!-- /container -->
