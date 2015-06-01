@@ -27,11 +27,11 @@ user2 = User.create(first_name: "Joyce", last_name: "Delt", email: "joyce@test.c
 user3 = User.create(first_name: "Derek", last_name: "Tang", email: "derek@derek.com", phone: "415-555-1212", password: 'password')
 user4 = User.create(first_name: "Calvin", last_name: "Settachatgul", email: "calvin@calvin.com", phone: "5102208405", password: 'password')
 
-user5 = User.create(first_name: "tranpsorter_first", last_name: "tranpsorter_last", email: "transporter@transporter.com", phone: "5102208405", password: 'password')
+user5 = User.create(first_name: "tranpsorter_first", last_name: "tranpsorter_last", email: "transporter@transporter.com", phone: "5102208405", password: 'password', lat: "10.0000", lng: "20.0000")
 
-bike1 = Bike.create(make: 'mountain bike', name: 'hugh_bike', color: Faker::Commerce.color, status: 'with_user', user_id: 1, tranporter_id: 5)
-bike2 = Bike.create(make: 'road bike', name: 'joyce_bike', color: Faker::Commerce.color, status: 'with_user',  user_id: 2, tranporter_id: 5)
-bike3 = Bike.create(make: 'touring bike', name: 'derek_bike', color: Faker::Commerce.color, status: 'with_user' ,  user_id: 3, tranporter_id: 5)
-bike4 = Bike.create(make: 'race bike', name: 'calvin_bike', color: Faker::Commerce.color, status: 'with_user' ,  user_id: 4, tranporter_id: 5)
+bike1 = Bike.create(make: 'mountain bike', name: 'hugh_bike', color: Faker::Commerce.color, status: 'with_user', user_id: 1, transporter_id: 5)
+bike2 = Bike.create(make: 'road bike', name: 'joyce_bike', color: Faker::Commerce.color, status: 'with_user',  user_id: 2, transporter_id: 5)
+bike3 = Bike.create(make: 'touring bike', name: 'derek_bike', color: Faker::Commerce.color, status: 'with_user' ,  user_id: 3, transporter_id: 5)
+bike4 = Bike.create(make: 'race bike', name: 'calvin_bike', color: Faker::Commerce.color, status: 'with_user' ,  user_id: 4, transporter_id: 5)
 
 # Bike.create(make: 'mountain bike', name: 'lorenzo_bike', color: Faker::Commerce.color, status: 'with_user', user_id: user.id)

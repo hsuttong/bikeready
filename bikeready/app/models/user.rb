@@ -7,5 +7,5 @@ class User < ActiveRecord::Base
   has_many :bikes
   has_many :addresses
 
-  has_many :bikes, :foreign_key => "transporter_id", :class_name => "Bike"
+  has_many :tranpsorted_bikes, :foreign_key => "transporter_id", :class_name => "Bike"
 end
