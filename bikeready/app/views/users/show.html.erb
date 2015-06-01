@@ -42,8 +42,17 @@
       <!-- Main component for a primary marketing message or call to action -->
       <div class="jumbotron">
         <h1 class="manage_bike">Welcome <%= current_user.first_name %>!</h1>
-        <p class="manage_bike">Get your bike delivered anywhere inside San Francisco, CA.</p>
+        <p class="manage_bike">Get your bike delivered anywhere inside San Francisco, CA.  <% if @bike %>
+            <div id="bike_status" class="div-bg">
+              <h3>
+                Bike Status: &nbsp;&nbsp;&nbsp; <%= @bike.status %>
+              </h3>
+            </div>
+          <% end %>
+        </p>
       </div>
+
+
       
         <div class="col-md-6" id="map-canvas">
         </div>  <!-- div for map -->
