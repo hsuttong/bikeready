@@ -1,27 +1,80 @@
+<!-- start of bootstrap -->
+<div class="container">
+    <div class="row">
+        <div class="col-md-4 col-md-offset-7">
+          <br>
+          <br>
+          <div class="br_title"> Bike Ready</div>
+            <div class="panel panel-default">
 
-<h2>Log in</h2>
+                <div class="panel-heading">
+                    <span class="glyphicon glyphicon-lock">
+                    </span>
+                    Login
+                </div>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
-  </div>
+                <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
+                <div class="panel-body">
 
-  <% if devise_mapping.rememberable? -%>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
-    </div>
-  <% end -%>
+                  <form class="form-horizontal" role="form">
 
-  <div class="actions">
-    <%= f.submit "Log in" %>
-  </div>
-<% end %>
+                    <div class="form-group">
+                        <label for="inputEmail3" class="col-sm-3 control-label">
+                          Email
+                        </label>
+                        <div class="col-sm-9">
+                          <%= f.email_field :email, autofocus: true, id:'inputEmail3', placeholder:'Email', class:'form-control' %>
+                        </div>
+                    </div>
 
-<%= render "devise/shared/links" %>
+                    <div class="form-group">
+                      <label for="inputPassword3" class="col-sm-3 control-label">
+                        Password
+                      </label>
+                      <div class="col-sm-9">
+                        <%= f.password_field :password, autocomplete: "off", id:'inputPassword3', class:'form-control', placeholder:'Password' %>
+                      </div>
+                    </div>
+
+                    <a href="/users/password/new">
+                      Forgot password?
+                    </a>
+
+                    <div class="form-group">
+                      <div class="col-sm-offset-3 col-sm-9">
+                        <div class="checkbox">
+
+                          <% if devise_mapping.rememberable? -%>
+                          <label>
+                            <%= f.check_box :remember_me %>
+                            Remember me
+                          </label>
+                          <% end %>
+
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="form-group last">
+                      <div class="col-sm-offset-3 col-sm-9">
+                        <%= f.submit "Log in", class:"btn btn-success btn-sm" %>
+                        <button type="reset" class="btn btn-default btn-sm">
+                          Reset
+                        </button>
+                      </div>
+                    </div>
+
+                  </form>
+                </div>
+
+               <% end %>
+
+
+                <div class="panel-footer">
+                  Not a member?
+                     <a href="/users/sign_up">Sign Up</a>
+                </div>
+            </div>
+        </div>
+<!-- end of bootstrap -->

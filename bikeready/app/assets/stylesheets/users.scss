@@ -6,27 +6,66 @@
 
 //showpage
 
-#title{
+
+//---------login bootstrap
+ body {
+  background: url(/assets/park_bike.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.panel-default {
+opacity: 0.9;
+margin-top:30px;
+}
+.form-group.last { margin-bottom:0px; }
+
+.br_title{
+  font-family: Bradley Hand, arial, SignPainter-HouseScript;
+  font-size:68px;
+  text-align:center;
+}
+//------------end login
+
+.background {
+  z-index: -1000;
+  position:fixed;
+  overflow: hidden;
   width:100%;
 }
 
-#banner{
-  width:300px;
+.title{
+  width:100%;
+}
+
+.banner{
+  width:1024px;
   margin-left:auto;
   margin-right:auto;
   font-family:arial;
+  font-size:80px;
+  text-align:center;
 }
 
-#user_name{
-  color:green;
+.user_name{
+  width:100%;
   font-family:arial;
   font-size:18px;
+  margin-top: 10px;
 }
 
-#body-container{
+.body-container{
   width:100%;
-  margin-left:20px;
-  margin-right:20px;
+  height:100%;
+  padding-top:20px;
+  background-color:rgba(255,255,255,0.7);
+}
+
+.form{
+  width:100%;
+  padding:10px;
 }
 
 .button{
@@ -35,16 +74,20 @@
 
 
 .avatar {
-  width: 50px;
-  height: 50px;
+  width: 80px;
+  height: 80px;
   margin-top:20px;
   margin-left:30px;
 }
 
-.div-bg {
-  background: #CC99FF;
+#bike_status{
+
+  font-size:18px;
+  font-family:arial;
 }
 
-h2{
-  color:red;
+.info{
+  margin-left:100px;
 }
+
+
