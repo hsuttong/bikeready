@@ -3,9 +3,11 @@ require 'httparty'
 KEY = ENV['POSTMATES_API_KEY']
 USER = ENV['POSTMATES_CUSTOMER_ID']
 HOST = ENV['POSTMATES_HOST']
+GOOG_KEY = ENV['GOOG_KEY']
 
 class TasksController < ApplicationController
   include HTTParty
+
 
   def index
   end
@@ -27,9 +29,9 @@ class TasksController < ApplicationController
     p "today is a good day"
   end
 
-  # def show
-  #   #@user = User.find(params[:id])
-  #   @user = User.find(1)
-  #   @bike = @user.bikes.first
-  # end
+  def show
+    #@user = User.find(params[:id])
+    @user = User.find(1)
+    @bike = @user.bikes.first
+  end
 end
