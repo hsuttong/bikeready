@@ -1,9 +1,8 @@
 // var watchID = null;
 
 $(document).ready(function(){
-
 	if( navigator.geolocation ){
-
+		console.log("hello")
 		var optn = {
 			enableHighAccuracy: true,
 			timeout  		  : Infinity,
@@ -51,6 +50,7 @@ function fail(error){
 		2: "Position of the user not available<br>",
 		3: "Request timed out<br>",
 	}
+
 	var errMsg = errorType[error.code];
 
 	if( error.code == 0 || error.code == 2){
@@ -61,7 +61,6 @@ function fail(error){
 };
 
 function success(position){
-
 	var googleLatLng = new google.maps.LatLng(
 							position.coords.latitude,
 							position.coords.longitude
@@ -77,5 +76,6 @@ function success(position){
 	var map = new google.maps.Map(Pmap, mapOpt);
 
 	addMarker(map , googleLatLng, "Your location", "Hello<br>this is where you are located");
-	// $(".location").html("Latitude: "  +position.coords.latitude+ "<br>Longitude: " +position.coords.longitude+ "<br>Accuracy: " +position.coords.accuracy )
+	$(".location").html("Latitude: "  +position.coords.latitude+ "<br>Longitude: " +position.coords.longitude+ "<br>Accuracy: " +position.coords.accuracy )
+	// debugger
 }
