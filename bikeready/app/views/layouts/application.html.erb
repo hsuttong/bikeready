@@ -6,12 +6,16 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 
+  <script type="text/javascript"
+      src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOG_KEY'] %>">
+  </script>
+
 </head>
 <body>
 
 <%= yield %>
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
+<!--   <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p> -->
 
 </body>
 </html>

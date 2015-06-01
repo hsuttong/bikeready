@@ -1,25 +1,115 @@
-<h1>Where would you like to have your Bike delivered:</h1>
+<!-- bootstrap -->
 
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">
+          Toggle navigation
+        </span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">
+        Bike Ready
+      </a>
+    </div>
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
 
-<h3>Enter an delivery address:</h3>
+        <% if @bike %>
+          <li class="active">
+            <%= link_to 'Deliver Bike', new_task_path %>
+              <span class="sr-only">(current)</span>
+          </li>
+          <li>
+            <%= link_to 'Pick-up Bike', tasks_pickup_conf_path %>
+          </li>
+        <%end%>
 
-<form action="/tasks" method="post">
-  <input type="text" name="street" placeholder="street"> 
-  <input type="text" name="city" placeholder="city">
-  <input type="text" name="state" placeholder="state">
-  <input type="text" name="zip_code" placeholder="zip"><br><br>
+        <% if @bike.status == 'pickup' || @bike.status =='pending'  %>
+          <li>
+            <%= link_to 'Cancel Request', tasks_pickup_conf_path %>
+          </li>
+        <%end%>
 
-  <input type="text" placeholder="hh:mm:ss" name="pickup"> pickup <br>
-  <input type="text" placeholder="hh:mm:ss" name="pickup_complete"> pickup_complete <br>
-  <input type="text" placeholder="hh:mm:ss" name="pickup_dropoff"> pickup_dropoff<br>
-  <input type="text" placeholder="hh:mm:ss" name="pickup_delivered"> pickup_delivered<br>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+            <li class="divider"></li>
+            <li><a href="#">One more separated link</a></li>
+          </ul>
+        </li>
+      </ul>
+      <form class="navbar-form navbar-left" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search">
+        </div>
+        <button type="submit" class="btn btn-default">Submit</button>
+      </form>
+      <ul class="nav navbar-nav navbar-right">
 
-  <input type="submit" value="submit">
-</form>
+        <% if user_signed_in? %>
+        <li>
+          <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
+        </li>
+        <% else %>
+          <%= link_to('Login', new_user_session_path)  %>
+        <% end %>
 
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+<!-- bootstrap -->
 
-<!--  robo_pickup="00:10:00"
-      robo_pickup_complete="00:20:00"
-      robo_dropoff="00:21:00"
-      robo_delivered="00:34:00"
- -->
+<div class="body-container">
+  <div class="title">
+    <div class="banner">
+<h1>Where would you like to have your bike delivered?</h1>
+    </div>
+  </div>
+
+  <div class="info">
+    <img class="avatar" src="http://www.sessionlogs.com/media/icons/defaultIcon.png">
+    <div class="user_name">
+      You are signed in:
+      <%= current_user.first_name %>
+    </div>
+
+    <div class="form">
+      <h3>Enter an delivery address:</h3>
+      <form action="/tasks" method="post">
+        <input type="text" name="street" placeholder="street">
+        <input type="text" name="city" placeholder="city">
+        <input type="text" name="state" placeholder="state">
+        <input type="text" name="zip_code" placeholder="zip"><br><br>
+
+        <input type="text" placeholder="hh:mm:ss" name="pickup"> pickup <br>
+        <input type="text" placeholder="hh:mm:ss" name="pickup_complete"> pickup_complete <br>
+        <input type="text" placeholder="hh:mm:ss" name="pickup_dropoff"> pickup_dropoff<br>
+        <input type="text" placeholder="hh:mm:ss" name="pickup_delivered"> pickup_delivered<br>
+
+        <input type="submit" value="submit">
+      </form>
+    </div>
+  </div>
+</div>

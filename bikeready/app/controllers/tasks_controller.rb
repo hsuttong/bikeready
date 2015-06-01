@@ -4,14 +4,13 @@ class TasksController < ApplicationController
 
   skip_before_filter  :verify_authenticity_token  # Added this to prevent CSRF errors
 
-  include HTTParty
-
   def index
   end
 
   def new
     p "tasks#new"
     @address = Address.new
+    @bike = current_user.bikes.first
   end
 
 
@@ -40,6 +39,17 @@ class TasksController < ApplicationController
     #Create a Delivery
     @user = User.find(current_user.id)
     @bike = @user.bikes.first
+# =======
+#     #binding.pry
+#     #i need to put the @user and @bike due to css error
+#     @user = current_user
+#     @bike = current_user.bikes.first
+#     @address = Address.new(city: params[:city],
+#                           state: params[:state],
+#                           street: params[:street],
+#                           zip_code: params[:zip_code],
+#                           user_id: 1)
+# >>>>>>> master
 
     delivery_hash = {
       manifest: "#{@bike.color} #{@bike.make}",
@@ -74,7 +84,7 @@ class TasksController < ApplicationController
     #Get status of delivery
     del_status_response = api.delivery_status(@task.delivery_id)
 
-    p "im in the controller" 
+    p "im in the controller"
     binding.pry
 
 
