@@ -41,7 +41,7 @@
 
       <!-- Main component for a primary marketing message or call to action -->
       <div class="jumbotron">
-        <h1 class="manage_bike">Welcome <%= current_user.first_name %>!</h1>
+        <h1 class="manage_bike">Welcome <%= current_user.first_name %>! <%= image_tag current_user.gravatar_url %></h1>
         <p class="manage_bike">Get your bike delivered anywhere inside San Francisco, CA.</p>
       </div>
       
