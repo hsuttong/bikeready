@@ -25,11 +25,13 @@ require 'faker'
 user1 = User.create(first_name: "Hugh", last_name: "Sutton-Gee", email: "hugh@hugh.com", phone: "415-555-1212", password: 'password')
 user2 = User.create(first_name: "Joyce", last_name: "Delt", email: "joyce@test.com", phone: "415-555-1212", password: 'password')
 user3 = User.create(first_name: "Derek", last_name: "Tang", email: "derek@derek.com", phone: "415-555-1212", password: 'password')
-user4 = User.create(first_name: "Calvin", last_name: "Settachatgul", email: "calvin@calvin.com", phone: "415-555-1212", password: 'password')
+user4 = User.create(first_name: "Calvin", last_name: "Settachatgul", email: "calvin@calvin.com", phone: "5102208405", password: 'password')
 
-bike1 = Bike.create(make: 'mountain bike', name: 'hugh_bike', color: Faker::Commerce.color, status: 'with_user', user_id: 1)
-bike2 = Bike.create(make: 'road bike', name: 'joyce_bike', color: Faker::Commerce.color, status: 'with_user',  user_id: 2)
-bike3 = Bike.create(make: 'touring bike', name: 'derek_bike', color: Faker::Commerce.color, status: 'with_user' ,  user_id: 3)
-bike4 = Bike.create(make: 'race bike', name: 'calvin_bike', color: Faker::Commerce.color, status: 'with_user' ,  user_id: 4)
+user5 = User.create(first_name: "tranpsorter_first", last_name: "tranpsorter_last", email: "transporter@transporter.com", phone: "5102208405", password: 'password')
+
+bike1 = Bike.create(make: 'mountain bike', name: 'hugh_bike', color: Faker::Commerce.color, status: 'with_user', user_id: 1, tranporter_id: 5)
+bike2 = Bike.create(make: 'road bike', name: 'joyce_bike', color: Faker::Commerce.color, status: 'with_user',  user_id: 2, tranporter_id: 5)
+bike3 = Bike.create(make: 'touring bike', name: 'derek_bike', color: Faker::Commerce.color, status: 'with_user' ,  user_id: 3, tranporter_id: 5)
+bike4 = Bike.create(make: 'race bike', name: 'calvin_bike', color: Faker::Commerce.color, status: 'with_user' ,  user_id: 4, tranporter_id: 5)
 
 # Bike.create(make: 'mountain bike', name: 'lorenzo_bike', color: Faker::Commerce.color, status: 'with_user', user_id: user.id)
