@@ -6,4 +6,6 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   has_many :bikes
   has_many :addresses
+
+  has_many :bikes, :foreign_key => "transporter_id", :class_name => "Bike"
 end

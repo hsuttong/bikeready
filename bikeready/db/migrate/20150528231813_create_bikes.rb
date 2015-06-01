@@ -6,6 +6,7 @@ class CreateBikes < ActiveRecord::Migration
       t.string :color
       t.string :status
       t.belongs_to :user
+      t.integer :transporter_id
 
       t.timestamps null: false
     end
