@@ -1,16 +1,117 @@
-<h1>Where would you like to have your Bike delivered:</h1>
+<!-- bootstrap -->
+
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">
+          Toggle navigation
+        </span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">
+        Bike Ready
+      </a>
+    </div>
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+
+        <% if @bike %>
+          <li class="active">
+            <%= link_to 'Deliver Bike', new_task_path %>
+              <span class="sr-only">(current)</span>
+          </li>
+          <li>
+            <%= link_to 'Pick-up Bike', tasks_pickup_conf_path %>
+          </li>
+        <%end%>
+
+        <% if @bike.status == 'pickup' || @bike.status =='pending'  %>
+          <li>
+            <%= link_to 'Cancel Request', tasks_pickup_conf_path %>
+          </li>
+        <%end%>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+            <li class="divider"></li>
+            <li><a href="#">One more separated link</a></li>
+          </ul>
+        </li>
+      </ul>
+      <form class="navbar-form navbar-left" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search">
+        </div>
+        <button type="submit" class="btn btn-default">Submit</button>
+      </form>
+      <ul class="nav navbar-nav navbar-right">
+
+        <% if user_signed_in? %>
+        <li>
+          <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
+        </li>
+        <% else %>
+          <%= link_to('Login', new_user_session_path)  %>
+        <% end %>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+<!-- bootstrap -->
+
+<div class="body-container">
+  <div class="title">
+    <div class="banner">
+<h1>Where would you like to have your bike delivered?</h1>
+    </div>
+  </div>
+
+  <div class="info">
+    <img class="avatar" src="http://www.sessionlogs.com/media/icons/defaultIcon.png">
+    <div class="user_name">
+      You are signed in:
+      <%= current_user.first_name %>
+    </div>
+
+    <div class="form">
+      <h3>Enter an delivery address:</h3>
+      <%= form_for :address do |f| %>
+        <%= f.label :Street %>
+        <%= f.text_field :street %>
+        <%= f.label :City %>
+        <%= f.text_field :city %>
+        <%= f.label :State %>
+        <%= f.text_field :state %>
+        <%= f.label :Zipcode %>
+        <%= f.text_field :zip_code %>
+        <%= f.submit %>
+      <% end %>
+    </div>
+  </div>
+
+</div>
 
 
-<h3>Enter an delivery address:</h3>
-<%= form_for :address do |f| %>
-  <%= f.label :Street %>
-  <%= f.text_field :street %>
-  <%= f.label :City %>
-  <%= f.text_field :city %>
-  <%= f.label :State %>
-  <%= f.text_field :state %>
-  <%= f.label :Zipcode %>
-  <%= f.text_field :zip_code %>
-  <%= f.submit %>
-<% end %>
 

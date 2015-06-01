@@ -14,6 +14,9 @@ class TasksController < ApplicationController
 
   def new
     #binding.pry
+    #i need to put the @user and @bike due to css error
+    @user = current_user
+    @bike = current_user.bikes.first
     @address = Address.new(city: params[:city],
                           state: params[:state],
                           street: params[:street],
