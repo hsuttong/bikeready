@@ -62,11 +62,11 @@ test:
 #   production:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
-#production:
-  #<<: *default
-  #database: bikeready_production
-  #username: bikeready
-  #password: <%= ENV['BIKEREADY_DATABASE_PASSWORD'] %>
+production:
+  <<: *default
+  database: bikeready_production
+  username: bikeready
+  password: <%= ENV['BIKEREADY_DATABASE_PASSWORD'] %>
 
 
 
