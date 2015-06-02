@@ -1,44 +1,61 @@
-<h2 class="sign-up">Sign up</h2>
+<div class="jumbotron">
+<h2 class="manage_bike">Register for BikeReady! </h2>
+<div class="container">
+        <div class="row centered-form">
+        <div class="col-xs-12 col-sm-8 col-md-4 col-sm-offset-2 col-md-offset-4">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h3 class="panel-title">BikeReady</h3>
+            </div>
+            <div class="panel-body">
+              <form role="form">
+                <div class="row">
+                  <div class="col-xs-6 col-sm-6 col-md-6">
+                    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+                    <%= devise_error_messages! %>
+                    <div class="form-group">
+                        <%= f.text_field :first_name, autofocus: true, id:'first_name', class:"form-control input-sm", placeholder:"First Name" %>
+                    </div>
+                  </div>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
+                  <div class="col-xs-6 col-sm-6 col-md-6">
+                    <div class="form-group">
+                      <%= f.text_field :last_name, autofocus: true, id:'last_name', class:"form-control input-sm", placeholder:"Last Name" %>
+                    </div>
+                  </div>
+                </div>
 
-  <div class="field">
-    <%= f.label :first_name %><br />
-    <%= f.text_field :first_name, autofocus: true %>
-  </div>
+                <div class="form-group">
+                  <%= f.text_field :phone, autofocus: true, id:'email', class:"form-control input-sm", placeholder:"Mobile Number" %>
+                </div>
 
-  <div class="field">
-    <%= f.label :last_name %><br />
-    <%= f.text_field :last_name, autofocus: true %>
-  </div>
+                <div class="form-group">
+                  <%= f.text_field :email, autofocus: true, id:'email', class:"form-control input-sm", placeholder:"Email address"  %>
+                </div>
 
-  <div class="field">
-    <%= f.label :phone %><br />
-    <%= f.text_field :phone, autofocus: true %>
-  </div>
+                <div class="row">
+                  <div class="col-xs-6 col-sm-6 col-md-6">
+                    <div class="form-group">
+                      <%= f.password_field :password, autocomplete: "off", id:'password', class:"form-control input-sm", placeholder:"Password" %>
+                       <% if @minimum_password_length %>
+                      <span style="font-size:10px; font-style:italic;">(<%= @minimum_password_length %> characters min)</span>
+                      <% end %><br />
+                    </div>
+                  </div>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
-  </div>
+                  <div class="col-xs-6 col-sm-6 col-md-6">
+                    <div class="form-group">
+                      <%= f.password_field :password_confirmation, autocomplete: "off", id:'password', class:"form-control input-sm", placeholder:"Password" %>
+                    </div>
+                  </div>
+                </div>
 
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+                  <%= f.submit "Register", class:"btn btn-info btn-block" %>
+                  <% end %>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>

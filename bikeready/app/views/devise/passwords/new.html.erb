@@ -1,3 +1,64 @@
+<div class="jumbotron">
+<h2 class="manage_bike">Forgot your password? </h2>
+<div class="container">
+        <div class="row centered-form">
+        <div class="col-xs-12 col-sm-8 col-md-4 col-sm-offset-2 col-md-offset-4">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h3 class="panel-title">BikeReady</h3>
+            </div>
+            <div class="panel-body">
+              <form role="form">
+                <div class="row">
+                  <div class="col-xs-6 col-sm-6 col-md-6">
+                    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+                    <%= devise_error_messages! %>
+
+                  </div>
+
+                  <div class="col-xs-6 col-sm-6 col-md-6">
+                    <div class="form-group">
+                      <%= f.text_field :last_name, autofocus: true, id:'last_name', class:"form-control input-sm", placeholder:"Last Name" %>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <%= f.text_field :phone, autofocus: true, id:'email', class:"form-control input-sm", placeholder:"Mobile Number" %>
+                </div>
+
+                <div class="form-group">
+                  <%= f.text_field :email, autofocus: true, id:'email', class:"form-control input-sm", placeholder:"Email address"  %>
+                </div>
+
+                <div class="row">
+                  <div class="col-xs-6 col-sm-6 col-md-6">
+                    <div class="form-group">
+                      <%= f.password_field :password, autocomplete: "off", id:'password', class:"form-control input-sm", placeholder:"Password" %>
+                       <% if @minimum_password_length %>
+                      <span style="font-size:10px; font-style:italic;">(<%= @minimum_password_length %> characters min)</span>
+                      <% end %><br />
+                    </div>
+                  </div>
+
+                  <div class="col-xs-6 col-sm-6 col-md-6">
+                    <div class="form-group">
+                      <%= f.password_field :password_confirmation, autocomplete: "off", id:'password', class:"form-control input-sm", placeholder:"Password" %>
+                    </div>
+                  </div>
+                </div>
+
+                  <%= f.submit "Register", class:"btn btn-info btn-block" %>
+                  <% end %>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+
+<!-- original down -->
 <h2 class="field">Forgot your password?</h2>
 
 <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
