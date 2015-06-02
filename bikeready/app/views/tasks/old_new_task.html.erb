@@ -1,0 +1,15 @@
+
+<h1>Where would you like to have your Bike delivered:</h1>
+
+<h3>Enter an delivery address:</h3>
+<%= form_for :address do |f| %>
+  <%= f.label :Street %>
+  <%= f.text_field :street %>
+  <%= f.label :City %>
+  <%= f.text_field :city %>
+  <%= f.label :State %>
+  <%= f.text_field :state %>
+  <%= f.label :Zipcode %>
+  <%= f.text_field :zip_code %>
+  <%= f.submit %>
+<% end %>

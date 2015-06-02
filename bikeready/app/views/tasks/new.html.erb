@@ -1,16 +1,30 @@
-<h1>Where would you like to have your Bike delivered:</h1>
+<!-- bootstrap -->
 
 
-<h3>Enter an delivery address:</h3>
-<%= form_for :address do |f| %>
-  <%= f.label :Street %>
-  <%= f.text_field :street %>
-  <%= f.label :City %>
-  <%= f.text_field :city %>
-  <%= f.label :State %>
-  <%= f.text_field :state %>
-  <%= f.label :Zipcode %>
-  <%= f.text_field :zip_code %>
-  <%= f.submit %>
-<% end %>
 
+<div class="body-container">
+  <div class="title">
+    <div class="banner">
+<h1>Where would you like to have your bike delivered?</h1>
+    </div>
+  </div>
+
+  <div class="info">
+    <img class="avatar" src="http://www.sessionlogs.com/media/icons/defaultIcon.png">
+    <div class="user_name">
+      You are signed in:
+      <%= current_user.first_name %>
+    </div>
+
+    <div class="form">
+      <h3>Enter an delivery address:</h3>
+      <form action="/tasks" method="post">
+        <input type="text" name="street" placeholder="street">
+        <input type="text" name="city" placeholder="city">
+        <input type="text" name="state" placeholder="state">
+        <input type="text" name="zip_code" placeholder="zip"><br><br>
+        <input type="submit" value="submit">
+      </form>
+    </div>
+  </div>
+</div>
