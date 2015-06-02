@@ -41,7 +41,9 @@ ActiveRecord::Schema.define(version: 20150530221612) do
     t.string   "delivery_id"
     t.string   "status"
     t.string   "dropoff_address"
+    t.string   "dropoff_lat_lng"
     t.string   "pickup_address"
+    t.string   "pickup_lat_lng"
     t.integer  "user_id"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
