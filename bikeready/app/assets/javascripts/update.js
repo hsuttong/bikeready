@@ -1,13 +1,13 @@
 $(document).ready(function(){
 
+  $("")
+
 
   var getStatusOfBike = function(){
 
   getStatusOnce();
-
   //timeout
   //loop
-
   }
 
   var getStatusOnce = function(){
