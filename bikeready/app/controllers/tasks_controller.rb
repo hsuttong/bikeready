@@ -58,7 +58,7 @@ class TasksController < ApplicationController
       robo_pickup:          pickup,
       robo_pickup_complete: pickup_complete,
       robo_dropoff:         pickup_dropoff,
-      robo_delivered:       pickup_delivered,
+      robo_delivered:       pickup_delivered
     }
 
 
