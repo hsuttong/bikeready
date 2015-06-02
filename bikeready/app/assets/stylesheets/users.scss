@@ -85,6 +85,7 @@
 
 #bike_status {
   font-family:arial;
+  color: white;
 }
 
 .info {
@@ -92,10 +93,24 @@
 }
 
 html, body, #map-canvas {
-  height: 100%;
+  height: 500px;
+  width: 100%;
 }
 //=======================================
+.jumbotron {
+    background: rgba(122, 130, 136, 0.7)!important;
 
+    color: white;
+
+}
+
+p , .manage_bike{
+  color: white;
+}
+
+h1 {
+  color: white;
+}
 
 .panel-transparent {
   background: none;
@@ -109,3 +124,22 @@ html, body, #map-canvas {
   background: rgba(46, 51, 56, 0.2)!important;
 }
 
+
+footer {
+
+  height: 200px;
+  color: white;
+
+}
+
+.field {
+  
+  color: white;
+
+}
+
+.sign-up{
+  
+  color: white;
+  
+}
