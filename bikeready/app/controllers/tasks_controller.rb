@@ -56,12 +56,21 @@ class TasksController < ApplicationController
       robo_delivered:       params[:pickup_delivered]
     }
 
+
     delivery_response = api.create_delivery(delivery_hash)
+
+    binding.pry
+
     @task.delivery_id = delivery_response["id"]
+    @task.dropoff_lat_lng = JSON.generate(delivery_response["dropoff"]["location"])
+    @task.pickup_lat_lng = JSON.generate(delivery_response["pickup"]["location"])
     @task.status = delivery_response["status"]
+
+
+    @task.save!
     @bike.status = @task.status
     @bike.save!
-    @task.save!
+
 
     #Get status of delivery
     del_status_response = api.delivery_status(@task.delivery_id)
