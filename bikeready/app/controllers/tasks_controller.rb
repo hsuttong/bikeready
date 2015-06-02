@@ -84,7 +84,7 @@ class TasksController < ApplicationController
 
   def status_update
 
-    content_type :json
+    # content_type :json
 
     puts "hello whe are in status_update"
     puts "#***************************"
@@ -95,7 +95,19 @@ class TasksController < ApplicationController
 
     del_status_response = api.delivery_status(@task.delivery_id)
 
-    render json: {status: "hello"}
+    respond_to do |format|
++       if @task
++         format.html {render root_path}
++         format.json {render json:  del_status_response }
++       else
++         format.html {render root_path}
++         format.json { render :json => root_path.errors.full_messages, :status => :unprocessable_entity}
++       end
++     end
+
+
+    # render json: {status: "hello"}
+    # @hello = "response"
 
   end
 
