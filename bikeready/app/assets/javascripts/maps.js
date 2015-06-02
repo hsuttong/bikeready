@@ -57,7 +57,7 @@
         origin: new google.maps.LatLng(37.773736, -122.504739),
         //destination: new google.maps.LatLng(37.773736, -122.403665),
         destination: new google.maps.LatLng($('#lat').html(), $('#lng').html() ),
-        travelMode: google.maps.TravelMode.WALKING
+        travelMode: google.maps.TravelMode.DRIVING
         };
         directionsService.route(request, function(result, status) {
         if (status == google.maps.DirectionsStatus.OK) {
