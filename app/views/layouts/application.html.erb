@@ -38,21 +38,22 @@
                <%end%>
               <li><%= link_to 'About', static_pages_about_path %></li>
               <li><%= link_to 'Contact Us', static_pages_contact_path %></li>
-
             </ul>
+
             <ul class="nav navbar-nav navbar-right">
 
-              <li>
-                <% if user_signed_in? %>
-                  <li>
-                    <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
-                  </li>
-                  <li><%= image_tag current_user.gravatar_url({size: 48}) %></li>
-                  <% else %>
-                    <%= link_to('Login', new_user_session_path)  %>
-                <% end %>
-             </li>
-            </ul>
+             <li>
+               <% if user_signed_in? %>
+                 <li>
+                   <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
+                 </li>
+                 <li><%= image_tag current_user.gravatar_url({size: 48}) %></li>
+                 <% else %>
+                   <%= link_to('Login', new_user_session_path)  %>
+               <% end %>
+            </li>
+           </ul>
+
           </div><!--/.nav-collapse -->
         </div><!--/.container-fluid -->
       </nav>
