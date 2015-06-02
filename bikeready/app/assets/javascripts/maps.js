@@ -53,8 +53,10 @@
         var directionsService = new google.maps.DirectionsService();
 
         var request = {
+
         origin: new google.maps.LatLng(37.773736, -122.504739),
-        destination: new google.maps.LatLng(37.773736, -122.403665),
+        //destination: new google.maps.LatLng(37.773736, -122.403665),
+        destination: new google.maps.LatLng($('#lat').html(), $('#lng').html() ),
         travelMode: google.maps.TravelMode.WALKING
         };
         directionsService.route(request, function(result, status) {

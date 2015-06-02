@@ -59,8 +59,6 @@ class TasksController < ApplicationController
 
     delivery_response = api.create_delivery(delivery_hash)
 
-    binding.pry
-
     @task.delivery_id = delivery_response["id"]
     @task.dropoff_lat_lng = JSON.generate(delivery_response["dropoff"]["location"])
     @task.pickup_lat_lng = JSON.generate(delivery_response["pickup"]["location"])
