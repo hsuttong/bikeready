@@ -40,6 +40,11 @@ class TasksController < ApplicationController
     @user = User.find(current_user.id)
     @bike = @user.bikes.first
 
+    pickup = "00:00:00"
+    pickup_complete = "00:00:01"
+    pickup_dropoff = "00:00:05"
+    pickup_delivered = "00:00:30"
+
     delivery_hash = {
       manifest:             "#{@bike.color} #{@bike.make}",
       pickup_name:          "Bike Ready, Inc.",
@@ -50,10 +55,10 @@ class TasksController < ApplicationController
       dropoff_address:      @task.dropoff_address,
       dropoff_phone_number: current_user.phone,
       quote_id:             @task.quote_id,
-      robo_pickup:          params[:pickup],
-      robo_pickup_complete: params[:pickup_complete],
-      robo_dropoff:         params[:pickup_dropoff],
-      robo_delivered:       params[:pickup_delivered]
+      robo_pickup:          pickup,
+      robo_pickup_complete: pickup_complete,
+      robo_dropoff:         pickup_dropoff,
+      robo_delivered:       pickup_delivered
     }
 
 
