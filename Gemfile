@@ -31,10 +31,10 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'devise'
 gem 'gravtastic'
-
 gem 'httparty'
 
 group :production do 
+  gem 'puma'
   gem 'rails_12factor'
   gem 'faker'
 end
