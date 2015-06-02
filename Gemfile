@@ -36,6 +36,7 @@ gem 'httparty'
 
 group :production do 
   gem 'rails_12factor'
+  gem 'faker'
 end
 
 
