@@ -8,6 +8,9 @@ Rails.application.routes.draw do
   # get '/tasks/deliver_conf'
   get '/tasks/pickup_conf'
 
+  # get '/tasks/status_update'
+  get '/tasks/status_update'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
   # post 'login' => 'sessions#create'

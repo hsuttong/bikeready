@@ -82,6 +82,23 @@ class TasksController < ApplicationController
     redirect_to '/'
   end
 
+  def status_update
+
+    content_type :json
+
+    puts "hello whe are in status_update"
+    puts "#***************************"
+    puts "#***************************"
+    puts "#***************************"
+
+    @task = Task.where(user_id: current_user.id).last
+
+    del_status_response = api.delivery_status(@task.delivery_id)
+
+    render json: {status: "hello"}
+
+  end
+
   def pickup_conf
     p "tasks#pickup_conf"
   end
