@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   get 'static_pages/about'
   devise_for :users
   resources :tasks
+
+  resources :bikes
   # get 'tasks/index'
 
   # get '/tasks/deliver_conf'
