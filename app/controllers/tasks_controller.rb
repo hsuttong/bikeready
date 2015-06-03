@@ -66,9 +66,6 @@ class TasksController < ApplicationController
     @bike.status = @task.status
     @bike.save!
 
-    #Get status of delivery
-    del_status_response = api.delivery_status(@task.delivery_id)
-
     redirect_to '/'
   end
 
