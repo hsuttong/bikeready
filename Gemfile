@@ -3,7 +3,6 @@ ruby '2.0.0'
 gem 'bootstrap-sass'
 
 gem 'autoprefixer-rails'
-gem 'twilio-ruby', '~> 4.1.0'
 
 # Use postgresql as the database for Active Record
 gem 'pg'
@@ -31,6 +30,7 @@ gem 'devise'
 gem 'gravtastic'
 gem 'httparty'
 gem 'faker'
+gem 'twilio-ruby', '~> 4.1.0'
 
 group :production do
   gem 'puma'

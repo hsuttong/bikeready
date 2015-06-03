@@ -22,7 +22,7 @@
       }
 
       function moveMarker(map, marker, latlng) {
-        if ($(".bike-current-status").html() != "with_user"){
+        if ($(".bike-current-status").html() != "storage"){
           marker.setPosition(latlng);
           map.panTo(latlng);
         }
@@ -42,7 +42,7 @@
         });
 
         marker = new google.maps.Marker({map:map, icon:"/images/bike_icon.png"});
-        if ($(".bike-current-status").html() != "with_user"){
+        if ($(".bike-current-status").html() != "storage"){
           for (i = 0; i < pathCoords.length; i++) {
             setTimeout(function(coords) {
               route.getPath().push(coords);
@@ -51,8 +51,6 @@
           }
         }
       }
-
-
 
       function getDirections(map) {
         var directionsService = new google.maps.DirectionsService();
@@ -71,5 +69,3 @@
         });
       }
       google.maps.event.addDomListener(window, 'load', initialize);
-
-
