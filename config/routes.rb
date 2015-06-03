@@ -4,8 +4,10 @@ Rails.application.routes.draw do
   devise_for :users
   get '/tasks/status_update'
   resources :tasks
-  
+
   get '/tasks/pickup_conf'
+
+  post 'twilio/voice' => 'twilio#voice'
 
   # get 'tasks/index'
   # get '/tasks/deliver_conf'
