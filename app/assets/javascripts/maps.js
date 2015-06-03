@@ -12,7 +12,7 @@
         var marker = new google.maps.Marker({
           position: myLatlng,
           map: map,
-          icon: "http://www.wmata.com/img/icon-bike.gif",
+          icon: "/images/warehouse_sm.png",
         });
 
         getDirections(map);
@@ -37,7 +37,7 @@
         map:map
         });
 
-        marker = new google.maps.Marker({map:map, icon:"http://www.wmata.com/img/icon-bike.gif"});
+        marker = new google.maps.Marker({map:map, icon:"/images/bike_icon.png"});
 
         for (i = 0; i < pathCoords.length; i++) {
           setTimeout(function(coords) {
