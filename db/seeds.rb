@@ -12,10 +12,10 @@ user2 = User.create(first_name: "Joyce", last_name: "Delatore", email: "joycedel
 user3 = User.create(first_name: "Derek", last_name: "Tang", email: "derekztang@gmail.com", phone: "415-555-1212", password: 'password')
 user4 = User.create(first_name: "Calvin", last_name: "Settachatgul", email: "calvin.settachatgul@gmail.com", phone: "415-555-1212", password: 'password')
 
-bike1 = Bike.create(make: 'mountain bike', name: 'hugh_bike', color: Faker::Commerce.color, status: 'with_user', user_id: 1)
-bike2 = Bike.create(make: 'road bike', name: 'joyce_bike', color: Faker::Commerce.color, status: 'with_user',  user_id: 2)
-bike3 = Bike.create(make: 'touring bike', name: 'derek_bike', color: Faker::Commerce.color, status: 'with_user' ,  user_id: 3)
-bike4 = Bike.create(make: 'race bike', name: 'calvin_bike', color: Faker::Commerce.color, status: 'with_user' ,  user_id: 4)
+bike1 = Bike.create(make: 'mountain bike', name: 'hugh_bike', color: Faker::Commerce.color, status: 'storage', user_id: 1)
+bike2 = Bike.create(make: 'road bike', name: 'joyce_bike', color: Faker::Commerce.color, status: 'storage',  user_id: 2)
+bike3 = Bike.create(make: 'touring bike', name: 'derek_bike', color: Faker::Commerce.color, status: 'storage' ,  user_id: 3)
+bike4 = Bike.create(make: 'race bike', name: 'calvin_bike', color: Faker::Commerce.color, status: 'storage' ,  user_id: 4)
 
 (2..4).each do |i|
 #   user = User.create(first_name: Faker::Name.name,
@@ -29,7 +29,7 @@ bike4 = Bike.create(make: 'race bike', name: 'calvin_bike', color: Faker::Commer
                   zip_code: Faker::Address.zip,
                   user_id:  i)
 
-#   Bike.create(make: 'mountain bike', name: 'lorenzo_bike', color: Faker::Commerce.color, status: 'with_user', user_id: user.id)
+#   Bike.create(make: 'mountain bike', name: 'lorenzo_bike', color: Faker::Commerce.color, status: 'storage', user_id: user.id)
 end
 
    Address.create(street:   '33 Montclair Terrace',

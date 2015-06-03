@@ -8,7 +8,7 @@ class UsersController < ApplicationController
 
       
     #get bike status
-    if (@bike && @bike.status != 'with_user' && @bike.status != 'delivered')
+    if (@bike && @bike.status != 'storage' && @bike.status != 'delivered')
       api = Postmates::Client.new
       @task = Task.where(user_id: current_user.id).last
       del_status_response = api.delivery_status(@task.delivery_id)
