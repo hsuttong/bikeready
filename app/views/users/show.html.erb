@@ -9,7 +9,7 @@
         <p class="manage_bike">Get your bike delivered anywhere inside San Francisco, CA.  <% if @bike %>
             <div id="bike_status" class="div-bg">
               <h3>
-                Bike Status: &nbsp;&nbsp;&nbsp; <div class="bike-current-status"><%= @bike.status %></div>
+                Bike Status: &nbsp;&nbsp;&nbsp; <span class="bike-current-status"><%= @bike.status %></span>
               </h3>
             </div>
           <% end %>

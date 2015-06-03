@@ -15,13 +15,6 @@ class TasksController < ApplicationController
 
 
   def create
-    # Need to define a relationship between this address and task? can't storey addresses like this in the db.
-    # @address = Address.new(street:   params[:street],
-    #                        city:     params[:city],
-    #                        state:    params[:state],
-    #                        zip_code: params[:zip_code],
-    #                        user_id:  current_user.id )
-
     @task = Task.new(user_id:         current_user.id,
                      pickup_address:  "33 Montclair Terrace, San Francisco, CA 94109",
                      dropoff_address: "#{params[:street]},#{params[:city]}, #{params[:state]}, #{params[:zip_code]}",
@@ -43,7 +36,7 @@ class TasksController < ApplicationController
     pickup = "00:00:00"
     pickup_complete = "00:00:01"
     pickup_dropoff = "00:00:05"
-    pickup_delivered = "00:00:30"
+    pickup_delivered = "00:00:45"
 
     delivery_hash = {
       manifest:             "#{@bike.color} #{@bike.make}",
@@ -69,15 +62,12 @@ class TasksController < ApplicationController
     @task.pickup_lat_lng = JSON.generate(delivery_response["pickup"]["location"])
     @task.status = delivery_response["status"]
 
-
     @task.save!
     @bike.status = @task.status
     @bike.save!
 
-
     #Get status of delivery
     del_status_response = api.delivery_status(@task.delivery_id)
-
 
     redirect_to '/'
   end
@@ -87,10 +77,16 @@ class TasksController < ApplicationController
 
     api = Postmates::Client.new
 
-    if( @bike && @bike.status != "with_user" &&  @bike.status != "delivered")
+    if( @bike && @bike.status != "storage" &&  @bike.status != "delivered")
       @task = Task.where(user_id: current_user.id).last
 
       del_status_response = api.delivery_status(@task.delivery_id)
+      if del_status_response["status"] != @task.status
+        @task.status = del_status_response["status"]
+        @bike.status = @task.status
+        @task.save!
+        @bike.save!
+      end
 
       account_sid  = ENV['TWILIO_ACCOUNTSID_PROD']
       auth_token = ENV['TWILIO_AUTH_TOKEN_PROD']
@@ -101,7 +97,8 @@ class TasksController < ApplicationController
         @message = @client.account.messages.create({:to => "+1#{current_user.phone}", :from => "+16502354317", :body => "Test"})
       end
 
-      render :json => del_status_response
+      render :json => {status: @task.status}
+
     else
       render :json => {:message => "error"}
     end
