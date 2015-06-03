@@ -88,10 +88,18 @@ class TasksController < ApplicationController
       account_sid  = ENV['TWILIO_ACCOUNTSID_PROD']
       auth_token = ENV['TWILIO_AUTH_TOKEN_PROD']
 
+      #binding.pry
+
+        p "********************"
+        p @task.status
+        p "********************"
       # set up a client to talk to the Twilio REST API
       @client = Twilio::REST::Client.new(account_sid, auth_token)
-      if (del_status_response.parsed_response["status"] == "delivered")
+      if (@task.status == "delivered")
         @message = @client.account.messages.create({:to => "+1#{current_user.phone}", :from => "+16502354317", :body => "Test"})
+        p "********************"
+        p @task.status
+        p "********************"
       end
 
       render :json => {status: @task.status}

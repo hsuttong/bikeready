@@ -22,7 +22,7 @@ var getStatus = function(){
 		});
 
 		request.done(function(response){
-			//console.log(response.status);
+			// console.log(response.status);
 			
 			var status = response.status;
 			if ($(".bike-current-status").html() != "storage"){
@@ -31,7 +31,7 @@ var getStatus = function(){
 		});
 
 		request.fail(function(response){
-			console.log("we fucked up");
+			console.log("Fail, ARRRRspec!");
 		});
 	}
 };

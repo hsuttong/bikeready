@@ -15,8 +15,6 @@ class UsersController < ApplicationController
       @bike.status = del_status_response["status"]
       @bike.save!
       
-      # binding.pry
-
       task_dropoff_lat_lng = JSON.parse(@task.dropoff_lat_lng)
       @task_dropoff_lat = task_dropoff_lat_lng["lat"]
       @task_dropoff_lng = task_dropoff_lat_lng["lng"]
