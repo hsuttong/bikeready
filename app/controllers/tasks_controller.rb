@@ -82,6 +82,26 @@ class TasksController < ApplicationController
     redirect_to '/'
   end
 
+  def status_update
+    puts "********************"
+    puts "got to the method"
+    # binding.pry
+
+    @bike = current_user.bikes.first
+
+    api = Postmates::Client.new
+
+  
+    if( @bike && @bike.status != "with_user" &&  @bike.status != "delivered")
+      @task = Task.where(user_id: current_user.id).last
+
+      del_status_response = api.delivery_status(@task.delivery_id)
+      render :json => del_status_response
+    else
+      render :json => {:message => "error"}
+    end
+  end
+
   def pickup_conf
     p "tasks#pickup_conf"
   end
