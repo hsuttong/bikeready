@@ -7,10 +7,27 @@
       <div class="jumbotron">
         <h1 class="manage_bike">Welcome <%= current_user.first_name %>! </h1>
         <p class="manage_bike">Get your bike delivered anywhere inside San Francisco, CA.  <% if @bike %>
+
             <div id="bike_status" class="div-bg">
               <h3>
                 Bike Status: &nbsp;&nbsp;&nbsp; <div class="bike-current-status"><%= @bike.status %></div>
               </h3>
+
+          <br>
+
+        <p>Bike information:
+          <% current_user.bikes.each do |bike| %>
+          <li><%= bike.make %>,
+              <%= bike.name %>,
+              <%= bike.color %></li>
+          <% end %>
+        </p>
+
+          <div id="bike_status" class="div-bg">
+              <p>
+                Bike Status: &nbsp;&nbsp;&nbsp; <%= @bike.status %>
+              </p>
+
             </div>
           <% end %>
         </p>
