@@ -77,7 +77,7 @@ class TasksController < ApplicationController
 
     api = Postmates::Client.new
 
-    if( @bike && @bike.status != "with_user" &&  @bike.status != "delivered")
+    if( @bike && @bike.status != "storage" &&  @bike.status != "delivered")
       @task = Task.where(user_id: current_user.id).last
 
       del_status_response = api.delivery_status(@task.delivery_id)
@@ -87,7 +87,18 @@ class TasksController < ApplicationController
         @task.save!
         @bike.save!
       end
+
+      account_sid  = ENV['TWILIO_ACCOUNTSID_PROD']
+      auth_token = ENV['TWILIO_AUTH_TOKEN_PROD']
+
+      # set up a client to talk to the Twilio REST API
+      @client = Twilio::REST::Client.new(account_sid, auth_token)
+      if (del_status_response.parsed_response["status"] == "delivered")
+        @message = @client.account.messages.create({:to => "+1#{current_user.phone}", :from => "+16502354317", :body => "Test"})
+      end
+
       render :json => {status: @task.status}
+
     else
       render :json => {:message => "error"}
     end
