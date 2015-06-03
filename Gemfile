@@ -3,6 +3,7 @@ ruby '2.0.0'
 gem 'bootstrap-sass'
 
 gem 'autoprefixer-rails'
+gem 'twilio-ruby', '~> 4.1.0'
 
 # Use postgresql as the database for Active Record
 gem 'pg'
@@ -25,12 +26,13 @@ gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
 
+
 gem 'devise'
 gem 'gravtastic'
 gem 'httparty'
 gem 'faker'
 
-group :production do 
+group :production do
   gem 'puma'
   gem 'rails_12factor'
 end
