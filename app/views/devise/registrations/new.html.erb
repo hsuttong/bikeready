@@ -8,10 +8,9 @@
               <h3 class="panel-title">BikeReady</h3>
             </div>
             <div class="panel-body">
-              <form role="form">
+                  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), role:"form") do |f| %>
                 <div class="row">
                   <div class="col-xs-6 col-sm-6 col-md-6">
-                    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
                     <%= devise_error_messages! %>
                     <div class="form-group">
                         <%= f.text_field :first_name, autofocus: true, id:'first_name', class:"form-control input-sm", placeholder:"First Name" %>
@@ -38,8 +37,8 @@
                     <div class="form-group">
                       <%= f.password_field :password, autocomplete: "off", id:'password', class:"form-control input-sm", placeholder:"Password" %>
                        <% if @minimum_password_length %>
-                      <span style="font-size:10px; font-style:italic;">(<%= @minimum_password_length %> characters min)</span>
-                      <% end %><br />
+                          <span style="font-size:10px; font-style:italic;">(<%= @minimum_password_length %> characters min)</span>
+                        <% end %><br/>
                     </div>
                   </div>
 
@@ -49,10 +48,8 @@
                     </div>
                   </div>
                 </div>
-
                   <%= f.submit "Register", class:"btn btn-info btn-block" %>
-                  <% end %>
-              </form>
+              <% end %>
             </div>
           </div>
         </div>
