@@ -7,10 +7,10 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 require 'faker'
 
-user1 = User.create(first_name: "Hugh", last_name: "Sutton-Gee", email: "hsuttong@gmail.com", phone: "415-555-1212", password: 'password')
-user2 = User.create(first_name: "Joyce", last_name: "Delatore", email: "joycedelatorre87@gmail.com", phone: "415-555-1212", password: 'password')
-user3 = User.create(first_name: "Derek", last_name: "Tang", email: "derekztang@gmail.com", phone: "415-555-1212", password: 'password')
-user4 = User.create(first_name: "Calvin", last_name: "Settachatgul", email: "calvin.settachatgul@gmail.com", phone: "415-555-1212", password: 'password')
+user1 = User.create(first_name: "Hugh", last_name: "Sutton-Gee", email: "hsuttong@gmail.com", phone: "4159353844", password: 'password')
+user2 = User.create(first_name: "Joyce", last_name: "Delatore", email: "joycedelatorre87@gmail.com", phone: "123-456-7890", password: 'password')
+user3 = User.create(first_name: "Derek", last_name: "Tang", email: "derekztang@gmail.com", phone: "4158121901", password: 'password')
+user4 = User.create(first_name: "Calvin", last_name: "Settachatgul", email: "calvin.settachatgul@gmail.com", phone: "5102208405", password: 'password')
 
 bike1 = Bike.create(make: 'mountain bike', name: 'hugh_bike', color: Faker::Commerce.color, status: 'storage', user_id: 1)
 bike2 = Bike.create(make: 'road bike', name: 'joyce_bike', color: Faker::Commerce.color, status: 'storage',  user_id: 2)
