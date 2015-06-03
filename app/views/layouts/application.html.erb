@@ -47,7 +47,7 @@
                  <li>
                    <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
                  </li>
-                 <li><%= image_tag current_user.gravatar_url({size: 48}) %></li>
+                 <li><%= image_tag(current_user.gravatar_url({size: 45}), class: "gravitar") %></li>
                  <% else %>
                    <%= link_to('Login', new_user_session_path)  %>
                <% end %>
