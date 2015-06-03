@@ -83,15 +83,11 @@ class TasksController < ApplicationController
   end
 
   def status_update
-    puts "********************"
-    puts "got to the method"
-    # binding.pry
-
     @bike = current_user.bikes.first
 
     api = Postmates::Client.new
 
-  
+
     if( @bike && @bike.status != "with_user" &&  @bike.status != "delivered")
       @task = Task.where(user_id: current_user.id).last
 
