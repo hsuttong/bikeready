@@ -30,7 +30,9 @@ $(document).ready(function(){
 		console.log(getStatus());
 	});
 
-
+	if($(".bike-current-status").html() === "delivered"){
+		$(".bike-current-status").html("with_user")
+	}
 
 });
 	var getStatus = function(){
