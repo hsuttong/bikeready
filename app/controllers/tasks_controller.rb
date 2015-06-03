@@ -92,6 +92,10 @@ class TasksController < ApplicationController
       @task = Task.where(user_id: current_user.id).last
 
       del_status_response = api.delivery_status(@task.delivery_id)
+      if (del_status_response == "delivered")  do
+        @message = @client.account.messages.create({:to => "#{current_user.number}", :from => "+16504092984", :body => "Test"})
+      end
+
       render :json => del_status_response
     else
       render :json => {:message => "error"}
