@@ -2,11 +2,13 @@ Rails.application.routes.draw do
   get 'static_pages/contact'
   get 'static_pages/about'
   devise_for :users
+  get '/tasks/status_update'
   resources :tasks
-  # get 'tasks/index'
-
-  # get '/tasks/deliver_conf'
+  
   get '/tasks/pickup_conf'
+
+  # get 'tasks/index'
+  # get '/tasks/deliver_conf'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
