@@ -25,8 +25,9 @@ var getStatus = function(){
 			// console.log(response.status);
 			
 			var status = response.status;
-			if ($(".bike-current-status").html() != "storage"){
-				$(".bike-current-status").html(response.status)
+			if ($(".bike-current-status").html() != "storage" && $(".bike-current-status").html() != response.status) {
+			 // if ($(".bike-current-status").html() != "storage") {
+				$(".bike-current-status").html(response.status).effect("highlight", "slow");
 			}
 		});
 
