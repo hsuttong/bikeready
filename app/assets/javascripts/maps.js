@@ -1,4 +1,6 @@
 
+
+
     function initialize() {
         var myLatlng = new google.maps.LatLng(37.773736, -122.504739);
         var mapOptions = {
@@ -16,8 +18,12 @@
           icon: "/images/warehouse_sm.png",
         });
 
-        getDirections(map);
+          getDirections(map);
+        
+      }
 
+      function readyToMap(){
+        return ($(".bike-current-status").html() === "pickup_complete" || $(".bike-current-status").html() === "dropoff" || $(".bike-current-status").html() === "delivered")
       }
 
       function moveMarker(map, marker, latlng) {
@@ -41,6 +47,7 @@
         });
 
         marker = new google.maps.Marker({map:map, icon:"/images/bike_icon.png"});
+
         if ($(".bike-current-status").html() != "storage"){
           for (i = 0; i < pathCoords.length; i++) {
             setTimeout(function(coords) {
@@ -57,12 +64,11 @@
         var request = {
 
         origin: new google.maps.LatLng(37.773736, -122.504739),
-        //destination: new google.maps.LatLng(37.773736, -122.403665),
         destination: new google.maps.LatLng($('#lat').html(), $('#lng').html() ),
         travelMode: google.maps.TravelMode.DRIVING
         };
         directionsService.route(request, function(result, status) {
-        if (status == google.maps.DirectionsStatus.OK) {
+        if (status == google.maps.DirectionsStatus.OK  ) {
             autoRefresh(map, result.routes[0].overview_path);
           }
         });
