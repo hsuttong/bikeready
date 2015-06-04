@@ -8,14 +8,9 @@
   </script>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
-
-
-
 </head>
 <body>
-
 	<div class="container">
-
       <!-- Static navbar -->
       <nav class="navbar navbar-default">
         <div class="container-fluid">
@@ -39,9 +34,7 @@
               <li><%= link_to 'About', static_pages_about_path %></li>
               <li><%= link_to 'Contact Us', static_pages_contact_path %></li>
             </ul>
-
             <ul class="nav navbar-nav navbar-right">
-
              <li>
                <% if user_signed_in? %>
                  <li>
@@ -53,15 +46,11 @@
                <% end %>
             </li>
            </ul>
-
           </div><!--/.nav-collapse -->
         </div><!--/.container-fluid -->
       </nav>
 
-
-<%= yield %>
-<!--   <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p> -->
+  <%= yield %>
 
   </div> <!-- /container -->
 </body>

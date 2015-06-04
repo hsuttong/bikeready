@@ -1,6 +1,6 @@
 $(document).ready(function(){
 
-	setInterval(getStatus, 5000);
+	setInterval(getStatus, 3000);
 
 	$(".get_update").on("click",function(event){
 		event.preventDefault();

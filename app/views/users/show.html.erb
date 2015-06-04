@@ -8,7 +8,7 @@
         <h1 class="manage_bike">Welcome <%= current_user.first_name %>! </h1>
         <p class="manage_bike">Get your bike delivered anywhere inside San Francisco, CA.  <% if @bike %>
           <div id="bike_status" class="div-bg">
-            <h3>Bike Status: &nbsp;&nbsp;&nbsp; <span class="bike-current-status"><%= @bike.status %></span></h3>
+            <p>Bike Status: &nbsp;&nbsp;&nbsp; <span class="bike-current-status"><%= @bike.status %></span><p>
           </div>
           <% end %>
         </p>
@@ -16,9 +16,9 @@
 
       <div class="col-md-6" id="map-canvas"></div>  <!-- div for map -->
 
-      <div id="footer">
-        <div class="container">
-        <p class="muted credit">Pocket Gophers <a href="http://www.devbootcamp.com">BikeReady</a> and <a href="http://www.devbootcamp.com">BikeReady Team copyright 2015</a>.</p>
+    <div id="footer">
+      <div class="container">
+        <p class="muted credit">BikeReady, &copy; 2015</p>
       </div>
     </div>
 
