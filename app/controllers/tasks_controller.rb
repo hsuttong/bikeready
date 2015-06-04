@@ -9,6 +9,7 @@ class TasksController < ApplicationController
 
   def new
     p "tasks#new"
+    p "hello"
     @address = Address.new
     @bike = current_user.bikes.first
   end

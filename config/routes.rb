@@ -5,6 +5,10 @@ Rails.application.routes.draw do
   get '/tasks/status_update'
   resources :tasks
 
+
+  resources :bikes
+  # get 'tasks/index'
+
   get '/tasks/pickup_conf'
 
   post 'twilio/voice' => 'twilio#voice'
