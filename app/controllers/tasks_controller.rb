@@ -14,7 +14,6 @@ class TasksController < ApplicationController
     @bike = current_user.bikes.first
   end
 
-
   def create
     @task = Task.new(user_id:         current_user.id,
                      pickup_address:  "33 Montclair Terrace, San Francisco, CA 94109",
@@ -54,7 +53,6 @@ class TasksController < ApplicationController
       robo_dropoff:         pickup_dropoff,
       robo_delivered:       pickup_delivered
     }
-
 
     delivery_response = api.create_delivery(delivery_hash)
 
@@ -97,7 +95,7 @@ class TasksController < ApplicationController
         begin
           @client = Twilio::REST::Client.new(account_sid, auth_token)
           @message = @client.account.messages.create({:to => "+1#{current_user.phone}", :from => "+16502354317", :body => Faker::Hacker.say_something_smart})
-        rescue Twilio::REST::RequestError => e  
+        rescue Twilio::REST::RequestError => e
           puts e.emessage
         end
       end

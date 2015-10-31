@@ -6,7 +6,6 @@ class UsersController < ApplicationController
     @user = current_user
     @bike = current_user.bikes.first
 
-      
     #get bike status
     if (@bike && @bike.status != 'storage' && @bike.status != 'delivered')
       api = Postmates::Client.new
@@ -14,7 +13,7 @@ class UsersController < ApplicationController
       del_status_response = api.delivery_status(@task.delivery_id)
       @bike.status = del_status_response["status"]
       @bike.save!
-      
+
       task_dropoff_lat_lng = JSON.parse(@task.dropoff_lat_lng)
       @task_dropoff_lat = task_dropoff_lat_lng["lat"]
       @task_dropoff_lng = task_dropoff_lat_lng["lng"]

@@ -4,8 +4,8 @@ class SessionsController < ApplicationController
   end
 
   def create
-      puts "*****************"
-      puts "we are in create session"
+    puts "*****************"
+    puts "we are in create session"
     @user = User.where(email: params[:email]).first
     if @user && @user.authenticate(params[:users][:password_digest])
       session[:id] = @user.id
@@ -15,5 +15,4 @@ class SessionsController < ApplicationController
       @errors="your login credentials failed"
     end
   end
-
 end
