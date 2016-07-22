@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 ruby '2.3.1'
 gem 'autoprefixer-rails'
+gem 'sprockets', '3.6.3' #fix for depcreation warnings
 
 # Use postgresql as the database for Active Record
 gem 'pg'

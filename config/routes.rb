@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   get 'static_pages/contact'
   get 'static_pages/about'
+  get '/.well-known/acme-challenge/:id' => 'static_pages#letsencrypt'
   devise_for :users
   get '/tasks/status_update'
   resources :tasks
@@ -8,7 +9,6 @@ Rails.application.routes.draw do
   get '/tasks/pickup_conf'
   post 'twilio/voice' => 'twilio#voice'
 
-  get '/.well-known/acme-challenge/:id' => 'static_pages#letsencrypt'
 
   # get 'tasks/index'
   # get '/tasks/deliver_conf'
