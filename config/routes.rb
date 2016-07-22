@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   get '/tasks/pickup_conf'
   post 'twilio/voice' => 'twilio#voice'
 
-  get '/.well-known/acme-challenge/:id' => 'static#letsencrypt'
+  get '/.well-known/acme-challenge/:id' => 'static_pages#letsencrypt'
   # get 'tasks/index'
   # get '/tasks/deliver_conf'
 
